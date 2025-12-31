@@ -17,4 +17,4 @@ password =input("Enter the password: ")
 d1=DatabaseConnector(host,user,password)
 
 d1.connect()
-d1.get_host()
+d1.get_host() 
