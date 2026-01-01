@@ -1,5 +1,4 @@
-````markdown
-# Day 2 — Polymorphism in Data Engineering (STRICT OOP)
+# Day 2 — Polymorphism in Data Engineering (Strict OOP)
 
 ## Objective
 Understand and apply **polymorphism** in real-world **Data Engineering pipelines**, eliminating conditional logic and enabling scalable ingestion systems.
@@ -47,13 +46,13 @@ class FileLoader:
 
     def validate(self):
         raise NotImplementedError
-````
+```
 
 ### Why This Exists
 
-* Enforces a strict contract
-* Guarantees every loader supports required operations
-* Prevents silent runtime failures
+- Enforces a strict contract
+- Guarantees every loader supports required operations
+- Prevents silent runtime failures
 
 ---
 
@@ -102,9 +101,9 @@ run_pipeline(JSONLoader())
 run_pipeline(ParquetLoader())
 ```
 
-* Pipeline code **never changes**
-* Only the object changes
-* This is **true polymorphism**
+- Pipeline code **never changes**
+- Only the object changes
+- This is **true polymorphism**
 
 ---
 
@@ -112,17 +111,16 @@ run_pipeline(ParquetLoader())
 
 ### Duck Typing
 
-* Python allows objects with matching methods to work
-* Flexible but unsafe in large systems
+- Python allows objects with matching methods to work
+- Flexible but unsafe in large systems
 
 ### Polymorphism with Inheritance
 
-* Enforces contracts
-* Safe for production pipelines
-* Required for large DE codebases
+- Enforces contracts
+- Safe for production pipelines
+- Required for large DE codebases
 
-> **Duck typing enables flexibility.
-> Inheritance + polymorphism enable safety and scale.**
+> **Duck typing enables flexibility. Inheritance + polymorphism enable safety and scale.**
 
 ---
 
@@ -138,20 +136,14 @@ run_pipeline(ParquetLoader())
 
 ## Interview-Ready One-Liner
 
-> “Polymorphism allows a single data pipeline to operate on multiple data sources using a common interface, eliminating conditional logic and improving scalability.”
+> "Polymorphism allows a single data pipeline to operate on multiple data sources using a common interface, eliminating conditional logic and improving scalability."
 
 ---
 
 ## Day 2 Status
 
-* Polymorphism: ✅ Mastered
-* Duck typing vs enforced contracts: ✅ Clear
-* Data Engineering application: ✅ Real-world
-* Ready to proceed to: **Abstraction**
-
----
-
-```
-
----
+- Polymorphism: ✅ Mastered
+- Duck typing vs enforced contracts: ✅ Clear
+- Data Engineering application: ✅ Real-world
+- Ready to proceed to: **Abstraction**
 

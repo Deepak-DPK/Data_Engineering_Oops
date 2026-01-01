@@ -25,13 +25,13 @@ Without inheritance:
 
 ---
 
-## Engineering Definition (Not Textbook)
+## Engineering Definition
 
 > **Inheritance allows multiple connectors to share common structure and behavior through a parent class, while implementing source-specific logic in child classes.**
 
 ---
 
-## Mental Model (Must Remember)
+## Mental Model
 
 - **Parent class** → shared structure + contract
 - **Child class** → technology-specific behavior
@@ -40,13 +40,13 @@ Inheritance exists **only when systems share structure**.
 
 ---
 
-## Encapsulation Review (Foundation for Inheritance)
+## Foundation: Encapsulation Review
 
-### Secure Connector Design (from `DatabaseConnector.py`)
+### Secure Connector Design
 
 ```python
 class DatabaseConnector:
-    def __init__(self,host,user,password):
+    def __init__(self, host, user, password):
         self.__host = host
         self.__user = user
         self.__password = password
@@ -56,35 +56,31 @@ class DatabaseConnector:
     
     def get_host(self):
         return self.__host
-    
-host=input("Enter the Host name : ")
-user=input("Enter the user name: ")
-password =input("Enter the password: ")
 
-d1=DatabaseConnector(host,user,password)
+host = input("Enter the Host name: ")
+user = input("Enter the user name: ")
+password = input("Enter the password: ")
 
-print('-'*20)
-
+d1 = DatabaseConnector(host, user, password)
 print(d1.connect())
 print(d1.get_host())
 ```
 
-### Why This Matters
-
+**Why This Matters:**
 - Credentials are protected
 - Access is controlled
 - Safe to extend using inheritance
 
 ---
 
-## Base Class Design (Inheritance Entry Point)
+## Base Class Design
 
-### `BaseConnector` (from `GenricConnector.py`)
+### `BaseConnector` Pattern
 
 ```python
 class BaseConnector:
-    def __init__(self,host):
-        self._host = host  #protected not private
+    def __init__(self, host):
+        self._host = host  # protected, not private
     
     def connect(self):
         raise NotImplementedError("subclasses must implement connect()")
@@ -93,21 +89,12 @@ class BaseConnector:
         return self._host
 ```
 
-### Key Design Decisions
-
-- `_host` is **protected**, not private
+**Key Design Decisions:**
+- `_host` is **protected**, enabling safe extension
 - `connect()` defines a **contract**, not behavior
 - Base classes should **not be instantiated directly**
 
----
-
-## Why `raise NotImplementedError` Exists
-
-```python
-raise NotImplementedError
-```
-
-Purpose:
+### Why `raise NotImplementedError`
 
 - Enforces implementation in child classes
 - Fails fast if contract is violated
@@ -117,7 +104,9 @@ Purpose:
 
 ---
 
-## Child Class — S3Connector (from `GenricConnector.py`)
+## Child Class Implementation
+
+### `S3Connector` Example
 
 ```python
 class S3Connector(BaseConnector):
@@ -129,37 +118,28 @@ class S3Connector(BaseConnector):
         return f"Connected to s3 bucket {self.bucket_name} at {self._host}"
 ```
 
-### What This Demonstrates
-
+**What This Demonstrates:**
 - `super()` reuses parent initialization
 - Child adds only what is unique
-- No duplication
+- No duplication of shared logic
 - Clean specialization
 
----
-
-## Correct Usage Pattern (from `GenricConnector.py`)
+### Usage Pattern
 
 ```python
 host = input("Enter the Host name: ")
-bucket_name=input("Enter the bucket name : ")
+bucket_name = input("Enter the bucket name: ")
 
-s1=S3Connector(host,bucket_name)
-
-print('*'*15)
-
+s1 = S3Connector(host, bucket_name)
 print(s1.get_host())
 print(s1.connect())
 ```
 
-### Important Rule
-
-- **Do NOT instantiate `BaseConnector`**
-- Always use a concrete child class
+**Important Rule:** Never instantiate `BaseConnector` directly—always use concrete child classes.
 
 ---
 
-## Common Mistakes Avoided
+## Common Mistakes to Avoid
 
 - ❌ Using global variables inside constructors
 - ❌ Instantiating base classes
@@ -168,7 +148,7 @@ print(s1.connect())
 
 ---
 
-## Professional Rules Locked on Day 1
+## Professional Rules for Day 1
 
 1. Use inheritance only when structure is shared
 2. Base classes define **contracts**
@@ -179,30 +159,19 @@ print(s1.connect())
 
 ---
 
-## Interview-Ready One-Liner
+## Interview-Ready Summary
 
-> “Inheritance allows Data Engineering connectors to share common structure through a base class while implementing source-specific behavior in child classes.”
-
----
-
-## Day 1 Status
-
-- Encapsulation → Inheritance transition: ✅
-- Base vs Child responsibility: ✅
-- Contract enforcement using `raise`: ✅
-- Data Engineering–specific application: ✅
-- Ready for Polymorphism: ✅
+> "Inheritance allows Data Engineering connectors to share common structure through a base class while implementing source-specific behavior in child classes."
 
 ---
 
-## Bridge to Day 1 (Dev2 Code Reference)
+## Bridge to Polymorphism (Day 2)
 
-Inheritance gives the shared contract. Polymorphism is where the pipeline code stays the same while the object changes.
+Inheritance provides the shared contract. Polymorphism allows pipeline code to remain unchanged while objects vary.
 
-Example from `dev2/LOAD_VALIDATE.py` (file loaders + validation):
+### Polymorphism Preview
 
 ```python
-#base class
 class FileLoader:
     def read(self):
         raise NotImplementedError
@@ -210,27 +179,35 @@ class FileLoader:
     def validate(self):
         raise NotImplementedError
 
-# child class
 class CSVLoader(FileLoader):
     def read(self):
         return "Reading csv data"
     def validate(self):
-        return "CSV schema Validated"
+        return "CSV schema validated"
 
 class JSONLoader(FileLoader):
     def read(self):
         return "Reading json data"
     def validate(self):
-        return "JSON structure is validated"
+        return "JSON structure validated"
 
-class ParaquetLoader(FileLoader):
+class ParquetLoader(FileLoader):
     def read(self):
-        return "Reading paraquet data"
+        return "Reading parquet data"
     def validate(self):
-        return "paraquet metadata is validated"
+        return "Parquet metadata validated"
 
-
-def run_pipeline(loader : FileLoader):
+def run_pipeline(loader: FileLoader):
     print(loader.read())
     print(loader.validate())
 ```
+
+---
+
+## Checklist
+
+- Encapsulation → Inheritance transition: ✅
+- Base vs Child responsibility: ✅
+- Contract enforcement: ✅
+- Data Engineering application: ✅
+- Ready for Polymorphism: ✅
