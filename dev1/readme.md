@@ -1,4 +1,4 @@
-# Day 4 — Inheritance in Data Engineering (STRICT OOP)
+# Day 1 — Inheritance in Data Engineering (STRICT OOP)
 
 ## Objective
 Learn and apply **Inheritance** in Python using **real Data Engineering systems**, focusing on reusable connectors and scalable pipeline design.
@@ -168,7 +168,7 @@ print(s1.connect())
 
 ---
 
-## Professional Rules Locked on Day 4
+## Professional Rules Locked on Day 1
 
 1. Use inheritance only when structure is shared
 2. Base classes define **contracts**
@@ -185,7 +185,7 @@ print(s1.connect())
 
 ---
 
-## Day 4 Status
+## Day 1 Status
 
 - Encapsulation → Inheritance transition: ✅
 - Base vs Child responsibility: ✅
@@ -195,7 +195,7 @@ print(s1.connect())
 
 ---
 
-## Bridge to Day 5 (Dev2 Code Reference)
+## Bridge to Day 1 (Dev2 Code Reference)
 
 Inheritance gives the shared contract. Polymorphism is where the pipeline code stays the same while the object changes.
 
