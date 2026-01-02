@@ -5,6 +5,7 @@ class DataSource(ABC):
     @abstractmethod 
     def connect(self):
         pass
+    
     @abstractmethod
     def fetch(self):
         pass

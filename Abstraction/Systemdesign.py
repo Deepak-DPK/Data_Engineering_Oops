@@ -46,13 +46,9 @@ def run_pipeline(source : DataSource):
         "data": data
     }
 
-
-
 p1=PostgresSource()
 a1=APIDataSource()
 s1=S3Source()
-
-
 
 print(run_pipeline(a1))
 print(run_pipeline(p1))
