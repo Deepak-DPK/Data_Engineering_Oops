@@ -20,6 +20,24 @@ you assume it's a blueprint (Class).
 When you see file_location, you know it's data (Variable).
 """
 
+
+"""
+Day 1 Mini-Exam 
+Q1. Debugging & PEP8 The following code crashes and looks unprofessional. 
+Rewrite it using strict PEP8 and fix the logic error 
+(trying to add string to integer).
+
+Python
+
+UserAge = "25"
+Next_Year = UserAge + 1
+print(Next_Year)
+"""
+
+user_age = 25
+next_year = user_age + 1 
+print(user_age)
+
 """
 Q2. Data Cleaning 
 You have a raw price string from a website: raw_price = "$$1,200.50" Write code to:
@@ -49,22 +67,3 @@ table = "users"
 
 print(f"SELECT * FROM {table} WHERE active = 1;")
 
-
-#QUESTION 1 
-
-"""
-Day 1 Mini-Exam (3 Questions)
-Q1. Debugging & PEP8 The following code crashes and looks unprofessional. 
-Rewrite it using strict PEP8 and fix the logic error 
-(trying to add string to integer).
-
-Python
-
-UserAge = "25"
-Next_Year = UserAge + 1
-print(Next_Year)
-"""
-
-user_age = 25
-next_year = user_age + 1 
-print(user_age)
