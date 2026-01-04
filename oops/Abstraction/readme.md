@@ -17,16 +17,16 @@ If these operations are guaranteed, the pipeline can safely operate on any sourc
 
 Abstraction enforces this guarantee before execution, not at runtime.
 
-## Defining the Contract (source.py)
+## Defining the Contract
 
-The abstract base class defines the contract that all data sources must follow.
-Any class that fails to implement this contract cannot exist in the system.
+The abstract base class defines the contract that all data sources must follow. Any class that fails to implement this contract cannot exist in the system.
+
+**source.py**
 
 ```python
 from abc import ABC, abstractmethod
 
 class DataSource(ABC):
-
     @abstractmethod
     def connect(self):
         pass
@@ -42,22 +42,22 @@ This design ensures:
 - Every concrete data source must implement both methods
 - Missing behavior is caught early, during development
 
-## Concrete Data Sources (source.py)
+## Concrete Data Sources
 
 Each data source provides its own implementation while respecting the same interface.
 
+**source.py**
+
 ```python
 class PostgresSource(DataSource):
-
     def connect(self):
         return "postgress connection"
     
     def fetch(self):
-        return "fetched the source from the connection "
+        return "fetched the source from the connection"
 
 
 class APIDataSource(DataSource):
-
     def connect(self):
         return "Connect to ExternalAPI"
     
@@ -66,7 +66,6 @@ class APIDataSource(DataSource):
 
 
 class S3Source(DataSource):
-
     def connect(self):
         return "Connect to s3 bucket"
     
@@ -80,9 +79,11 @@ All sources:
 - Hide implementation details
 - Can be replaced or extended without breaking pipelines
 
-## System Design: The Pipeline (systemdesign.py)
+## System Design: The Pipeline
 
 The pipeline depends only on the abstraction, not on concrete implementations.
+
+**systemdesign.py**
 
 ```python
 def run_pipeline(source: DataSource):
@@ -104,10 +105,10 @@ print(run_pipeline(p1))
 print(run_pipeline(s1))
 ```
 
-This design allows the same pipeline to run with any valid data source.
+This design allows the same pipeline to run with any valid data source:
 
-- The pipeline logic never changes.
-- Only the injected source changes.
+- The pipeline logic never changes
+- Only the injected source changes
 
 ## Why This Matters
 
@@ -121,10 +122,11 @@ This approach provides:
 
 It is the foundation used by real Data Engineering frameworks where pipelines must remain reliable as systems grow.
 
-## Key Points to Remember
+## Key Takeaways
 
 - Abstraction defines what must exist, not how it works
 - Pipelines should depend on abstract contracts
 - Concrete implementations can change freely
 - Errors are prevented early, not during execution
 - This is essential for scalable Data Engineering systems
+
