@@ -70,5 +70,3 @@ print(run_pipeline(p1))
 print(run_pipeline(a1))
 print(run_pipeline(s1))
 
-
-
