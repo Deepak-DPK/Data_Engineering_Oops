@@ -20,3 +20,15 @@ for f in files:
     clean_data = f.strip()
     print(f"Processing: {clean_data}")
 
+
+print('-'*50)
+
+emails = ["user1@datapipe.com", "admin_at_datapipe.com", "help@datapipe.com", "broken_address"] 
+
+for e in emails:
+    
+    if '@' in e:
+       print(f"Valid: {e}")
+    else:
+        print(f"Invalid Record: {e}")
+    
