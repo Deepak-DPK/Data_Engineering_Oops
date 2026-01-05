@@ -1,13 +1,13 @@
 
 
-# status_code = 404
+status_code = 404
 
-# if status_code == 200:
-#     print("Success : File Loading ....")
-# elif status_code == 404:
-#     print("Error : File Not Found.")
-# else:
-#     print("Unknown error : Alert the team")
+if status_code == 200:
+    print("Success : File Loading ....")
+elif status_code == 404:
+    print("Error : File Not Found.")
+else:
+    print("Unknown error : Alert the team")
 
 
 
