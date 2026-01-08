@@ -32,9 +32,3 @@ age_int = int(age_str) + 1  # OK
 ```
 
 ---
-
-**Day 1 is closed.**
-
-**Next Session:** Day 2 - Control Flow (Logic that decides *what* to do with the data).
-
-**Action:** Type **"Day 2"** whenever you are ready to start the next session (tomorrow).

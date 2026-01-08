@@ -34,8 +34,3 @@ for i, value in enumerate(transactions):
 ```
 
 ---
-
-**Day 2 is closed.**  
-**Next Session:** We will immediately finish the **Loop Master Challenge** (`break`/`continue`) and take the **Day 2 Exam**, then move to **Day 3**.
-
-**Action:** Type **"Day 3"** (or "Resume Day 2") when you are ready to pick this up tomorrow.

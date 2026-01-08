@@ -16,3 +16,5 @@ for r in responses:
         print("Ok")
     else:
         print("Alert: Failed Request")
+
+
