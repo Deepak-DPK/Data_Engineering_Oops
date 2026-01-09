@@ -32,10 +32,6 @@ user["role"] = "Admin"
 print(user) # {'name': 'Alice', 'score': 20, 'role': 'Admin'}
 
 
-product = {"id": 500, "price": 100, "stock": 5}
 
-product["price"] = 120
 
-product["total_value"] = ["Price" * "stock"]
 
-print(product)
