@@ -1,59 +1,70 @@
-# Day 1 Inheritance in Data Engineering Systems
+# Day 1: Inheritance in Data Engineering
 
-Modern Data Engineering platforms rely on multiple connectors that interact with different storage systems and services. Although each connector targets a different technology, many of them share the same structural responsibilities such as handling hosts, maintaining connection metadata, and exposing a consistent connection interface.
-
-Inheritance is used to model this shared structure while allowing each connector to specialize its behavior.
-
----
-
-## Why Inheritance Is Needed
-
-Without inheritance, every connector would reimplement:
-- Host handling
-- Connection setup logic
-- Shared utility methods
-
-This leads to duplicated code, inconsistent behavior, and higher maintenance cost. Inheritance eliminates this duplication by centralizing shared responsibilities in a parent class while allowing child classes to implement system-specific logic.
+## 🎯 Learning Objectives
+- Eliminate code duplication through inheritance hierarchies
+- Implement shared functionality in base classes
+- Use `super()` to extend parent class behavior
+- Apply protected attributes for safe data sharing
 
 ---
 
-## Base Connector Design
+## 📚 Core Concepts
 
-The base connector defines common structure and enforces a connection contract. It is not meant to be executed directly.
+### 1. **Inheritance**
+Child classes inherit attributes and methods from parent classes, eliminating duplication while enabling specialization.
 
+### 2. **Access Modifiers**
+
+| Convention | Visibility | Use Case |
+|------------|------------|----------|
+| `self.attr` | Public | External access allowed |
+| `self._attr` | Protected | Child class access (convention) |
+| `self.__attr` | Private | Name mangling, restricted access |
+
+### 3. **Method Resolution**
+
+```python
+super().__init__(args)  # Call parent constructor
+```
+
+Ensures parent initialization runs before child-specific logic.
+
+---
+
+## 📂 Practice Files
+
+- **[GenricConnector.py](GenricConnector.py)** - Base connector with protected `_host` and S3 specialization
+- **[DatabaseConnector.py](DatabaseConnector.py)** - Private attributes for secure credential handling
+
+---
+
+## 💡 Why This Matters for Data Engineering
+
+| Concept | Real-World Application |
+|---------|------------------------|
+| Base connector class | Shared logic for JDBC, S3, Kafka, SFTP connectors |
+| Protected attributes | Connection metadata reused by child connectors |
+| `super()` | Extending authentication logic from base to specialized connectors |
+| Private attributes | Securing credentials (passwords, API keys) |
+| Inheritance hierarchy | Building connector libraries (e.g., PySpark data sources) |
+
+**Real Example:** Apache Spark's `DataSource` API uses inheritance. Each connector (JDBC, Parquet, Delta) extends base functionality while adding format-specific reading logic.
+
+---
+
+## 🔑 Quick Reference
+
+**Base Class with Protected Attribute:**
 ```python
 class BaseConnector:
     def __init__(self, host):
         self._host = host
-
-    def connect(self):
-        raise NotImplementedError("Subclasses must implement connect()")
-
-    def get_host(self):
-        return self._host
 ```
 
-The protected `_host` attribute allows child classes to reuse connection metadata safely.
-The `connect()` method defines a required behavior without providing an implementation.
-
----
-
-## Specialized Connector Implementation
-
-A concrete connector extends the base class and provides technology-specific behavior.
-
+**Child Class Using super():**
 ```python
 class S3Connector(BaseConnector):
-    def __init__(self, host, bucket_name):
+    def __init__(self, host, bucket):
         super().__init__(host)
-        self.bucket_name = bucket_name
-
-    def connect(self):
-        return f"Connected to S3 bucket {self.bucket_name} at {self._host}"
+        self.bucket = bucket
 ```
-
-This design ensures:
-
-- Shared logic is reused
-- Specialization is explicit
-- No duplication of base functionality
