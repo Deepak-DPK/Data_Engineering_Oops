@@ -1,13 +1,9 @@
-import os
-
 
 """
 "w" mode is powerful: If the file doesn't exist, Python creates it for you automatically.
-
 "r" mode is strict: If the file is missing, it crashes.
-
 """
-
+import os
 # STEP 1: Create and Write the file
 # "w" creates the file if it doesn't exist
 with open("welcome.txt", "w") as f:
