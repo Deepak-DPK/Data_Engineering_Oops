@@ -1,0 +1,6 @@
+product,price,stock,tax,total_value
+Laptop,1000,5,100.0,5000
+Mouse,25,100,2.5,2500
+Monitor,200,10,20.0,2000
+Keyboard,50,30,5.0,1500
+Webcam,80,15,8.0,1200
