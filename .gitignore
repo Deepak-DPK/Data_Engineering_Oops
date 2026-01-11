@@ -37,6 +37,10 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
+# Project-specific prompt files (internal use only)
+master_prompt.md
+per-file-git-prompt.md
+
 # Data files (optional - uncomment if you don't want to track data files)
 # *.csv
 # *.xlsx
