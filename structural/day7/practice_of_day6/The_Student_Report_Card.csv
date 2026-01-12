@@ -1,0 +1,6 @@
+Student,math,science,english,average,failing_students
+Alice,85,92,78,85.0,False
+Bob,62,70,85,72.33333333333333,False
+Charlie,90,95,88,91.0,False
+David,45,55,60,53.333333333333336,True
+Eve,88,82,90,86.66666666666667,False
