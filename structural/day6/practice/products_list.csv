@@ -1,0 +1,6 @@
+product,price,stock,discount_price
+Laptop,1000,5,500.0
+Mouse,25,100,12.5
+Monitor,200,10,100.0
+Keyboard,50,30,25.0
+Webcam,80,15,40.0
