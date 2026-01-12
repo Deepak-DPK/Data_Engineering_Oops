@@ -1,0 +1,6 @@
+item,cost_price,selling_price,quantity_sold,profit_per_item,total_revenue
+Drill,40,60,10,20,200
+Hammer,5,10,50,5,250
+Nails,2,5,200,3,600
+Saw,15,25,15,10,150
+Wrench,6,8,30,2,60
