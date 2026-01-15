@@ -1,0 +1,4 @@
+id|name|role
+101|Batman|Hero
+102|Joker|Villain
+103|Robin|Sidekick
